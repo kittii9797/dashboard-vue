@@ -22,3 +22,10 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+## Things to improve :
+
+Preview:
+
+![Alt text](https://github.com/kittii9797/dashboard-vue/blob/main/preview.png)
