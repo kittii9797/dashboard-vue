@@ -28,4 +28,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 Preview:
 
-![Alt text](https://github.com/kittii9797/dashboard-vue/blob/main/preview.png)
+![Alt text](https://github.com/kittii9797/dashboard-vue/blob/master/preview.png)
