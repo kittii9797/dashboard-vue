@@ -2,46 +2,50 @@
 <div class="text-center fixed-bottom">
     <div class="slider">
 
-    <figure>
-  
-    <div class="slide">
-    <div class="text-slide">
-      <span class="caption-one">Alexey Topolyanskiy</span>
-      <span class="caption-two">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
-    </div> 
-      <div class="fade-slide"></div>
-      <image src="https://fastly.picsum.photos/id/1015/5000/3333.jpg?hmac=YiHIqvsVlhZoViBg5mG13IvI50oqAmgy79NY-PP_DEw" />
+		<figure>
+	
+			<div class="slide" v-for="item in data" v-bind:key="item">
+				<div class="text-slide">
+					<span class="caption-one">{{item.title}}</span>
+					<span class="caption-two">{{item.description}}</span>
+				</div> 
+				<div class="fade-slide"></div>
+				<img :src="item.img" />
+			</div>
 
-    </div>
-    
-    <div class="slide">
-    <div class="text-slide">
-      <span class="caption-one">Philippe Wuyts</span>
-      <span class="caption-two">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
-    </div>
-      <div class="fade-slide"></div>
-      <img src="https://fastly.picsum.photos/id/1016/3844/2563.jpg?hmac=WEryKFRvTdeae2aUrY-DHscSmZuyYI9jd_-p94stBvc" />
+		</figure>
 
-    </div>
-    
-    <div class="slide">
-    <div class="text-slide">
-      <span class="caption-one">Andrew Ridley</span>
-      <span class="caption-two">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
-    </div>  
-      <div class="fade-slide"></div>
-      <img src="https://fastly.picsum.photos/id/1018/3914/2935.jpg?hmac=3N43cQcvTE8NItexePvXvYBrAoGbRssNMpuvuWlwMKg" />
-
-    </div>
-
-    </figure>
-    
-
-</div>
+	</div>
 </div>
 </template>
 
 <script>
+export default {
+	data() {
+		return {
+			data: [
+				{
+					title: 'Alexey Topolyanskiy',
+					description:
+						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+					img: 'https://fastly.picsum.photos/id/1015/5000/3333.jpg?hmac=YiHIqvsVlhZoViBg5mG13IvI50oqAmgy79NY-PP_DEw'
+				},
+				{
+					title: 'Philippe Wuyts',
+					description:
+						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+					img: 'https://fastly.picsum.photos/id/1016/3844/2563.jpg?hmac=WEryKFRvTdeae2aUrY-DHscSmZuyYI9jd_-p94stBvc'
+				},
+				{
+					title: 'Andrew Ridley',
+					description:
+						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+					img: 'https://fastly.picsum.photos/id/1018/3914/2935.jpg?hmac=3N43cQcvTE8NItexePvXvYBrAoGbRssNMpuvuWlwMKg'
+				}
+			]
+		};
+	}
+};
 </script>
 
 <style scoped>

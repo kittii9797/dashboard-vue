@@ -2,78 +2,78 @@
   <section class="content">
     <section class="text">
       <h2>
-       Welcome To The Website
+       {{title}}
         <br/>
           <div class="countdown">
                 <div class="count-div">
-                    <span class="number months"></span>
+                    <span class="number months">{{months}}</span>
                     <span>Months</span>
                 </div>
                 <div class="count-div">
-                    <span class="number days"></span>
+                    <span class="number days">{{days}}</span>
                     <span>Days</span>
                 </div>
                 <div class="count-div">
-                    <span class="number hours"></span>
+                    <span class="number hours">{{hours}}</span>
                     <span>Hours</span>
                 </div>
                 <div class="count-div">
-                    <span class="number minutes"></span>
+                    <span class="number minutes">{{minutes}}</span>
                     <span>Minutes</span>
                 </div>
                 <div class="count-div">
-                    <span class="number seconds"></span>
+                    <span class="number seconds">{{seconds}}</span>
                     <span>Seconds</span>
                 </div>
             </div>
       </h2>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Nunc vel lobortis ex.
-        Integer quis tortor aliquam, convallis orci eget, ultrices massa.
-        Maecenas vestibulum dui at nibh ornare, vel commodo ipsum vestibulum.
+        {{description}}
       </p>
 
-        <button type="submit" class="btn"><span>Subscribe Here</span></button>
+        <button type="submit" class="btn"><span>{{buttonText}}</span></button>
     </section>
 
   </section>
 </template>
 
 <script>
-const newDate = new Date('may 04 23 23:59:59').getTime();
-const countdown = setInterval(() => {
-	const date = new Date().getTime();
-	const diff = newDate - date;
-
-	const month = Math.floor((diff % (1000 * 60 * 60 * 24 * (365.25 / 12) * 365)) / (1000 * 60 * 60 * 24 * (365.25 / 12)));
-	const days = Math.floor((diff % (1000 * 60 * 60 * 24 * (365.25 / 12))) / (1000 * 60 * 60 * 24));
-	const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-	const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-	const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-	document.querySelector('.seconds').innerHTML = seconds < 10 ? '0' + seconds : seconds;
-	document.querySelector('.minutes').innerHTML = minutes < 10 ? '0' + minutes : minutes;
-	document.querySelector('.hours').innerHTML = hours < 10 ? '0' + hours : hours;
-	document.querySelector('.days').innerHTML = days < 10 ? '0' + days : days;
-	document.querySelector('.months').innerHTML = month < 10 ? '0' + month : month;
-
-	if (diff === 0) {
-		clearInterval(countdown);
-		document.querySelector('.countdown').innerHTML = 'Happy Birthday Ahmed';
-	}
-}, 1000);
-
 export default {
-	props: {
-		selectedImage: String,
-		productColour: String
+	data() {
+		return {
+			title: 'Welcome To The Website',
+			description:
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel lobortis ex. Integer quis tortor aliquam, convallis orci eget, ultrices massa. Maecenas vestibulum dui at nibh ornare, vel commodo ipsum vestibulum.',
+			buttonText: 'Subscribe Here',
+			seconds: '',
+			minutes: '',
+			hours: '',
+			days: '',
+			months: ''
+		};
 	},
-	watch: {
-		productColour() {
-			const el = document.querySelector('#brand-name');
-			el.style.color = this.productColour;
-		}
+	mounted() {
+		const newDate = new Date('may 04 23 23:59:59').getTime();
+		const countdown = setInterval(() => {
+			const date = new Date().getTime();
+			const diff = newDate - date;
+
+			const month = Math.floor((diff % (1000 * 60 * 60 * 24 * (365.25 / 12) * 365)) / (1000 * 60 * 60 * 24 * (365.25 / 12)));
+			const days = Math.floor((diff % (1000 * 60 * 60 * 24 * (365.25 / 12))) / (1000 * 60 * 60 * 24));
+			const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+			const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+			this.seconds = seconds < 10 ? '0' + seconds : seconds;
+			this.minutes = minutes < 10 ? '0' + minutes : minutes;
+			this.hours = hours < 10 ? '0' + hours : hours;
+			this.days = days < 10 ? '0' + days : days;
+			this.months = month < 10 ? '0' + month : month;
+
+			if (diff === 0) {
+				clearInterval(countdown);
+			}
+		}, 1000);
 	}
 };
 </script>
